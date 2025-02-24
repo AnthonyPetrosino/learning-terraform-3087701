@@ -34,10 +34,11 @@ module "app_sg" {       # taken from https://registry.terraform.io/modules/terra
   version = "5.3.0"
   name = "app_new"
 
-  vpc_security_group_ids = [module.app_sg.security_group_id] 
+  vpc_id = data.aws_vpc.default.id 
   
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
+  
   egress_rules = [all-all]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
