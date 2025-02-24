@@ -29,7 +29,7 @@ resource "aws_instance" "app" {   # resource definition: what we want, the recou
   }
 }
 
-module "app_sq" {       # taken from https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest
+module "app_sg" {       # taken from https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/latest
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.3.0"
   name = "app_new"
