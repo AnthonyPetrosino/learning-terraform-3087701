@@ -27,6 +27,7 @@ resource "aws_eip" "app" {
 
 Notes:
  - vpc = virtual private cloud
+ - modules require main.tf, variables.tf, outputs.tf, README.md. Can be much more complicated (registry.terraform.io)
  - aws_security_group can control ports in and out and what protocols on each
  - In AWS a static ip is called an elastic ip as it can be reassigned, in terraform it is represented by "aws_eip"
  - meta arguements tell terraform info for itself/for deployment vs standard arguements tell AWS what to do 
