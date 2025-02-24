@@ -1,0 +1,32 @@
+Resource examples: 
+resource "aws_s3_bucket" "app" {
+  bucket = "samuelson-terraform-2022086" # Actual name on aws
+  acl = "private"
+  policy = file("policy.json") # external file
+}
+
+# For statick s3 bucket website:
+index_document {
+    suffix = "index.html"
+}
+
+
+Code "Example":
+resource "aws_instance" "app" {   # resource definition: what we want, the recourse name as we refer to it in terraform code
+  ami           = data.aws_ami.app_ami.id
+  instance_type = var.instance_type # Variable defined by us
+
+  tags = {
+    Name = "HelloWorld" # How it appears on AWS
+  }
+}
+resource "aws_eip" "app" {
+    instance = aws_instance.blog.id
+    vpc = true
+}
+
+Notes:
+ - vpc = virtual private cloud
+ - aws_security_group can control ports in and out and what protocols on each
+ - In AWS a static ip is called an elastic ip as it can be reassigned, in terraform it is represented by "aws_eip"
+ - meta arguements tell terraform info for itself/for deployment vs standard arguements tell AWS what to do 
