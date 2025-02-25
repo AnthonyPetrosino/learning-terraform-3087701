@@ -39,7 +39,7 @@ resource "aws_instance" "app" {   # resource definition: what we want, the recou
 
   vpc_security_group_ids = [aws_security_group.app.id]
 
-  subnet_id = module.blog_vpc.public_subnets[0]
+  subnet_id = module.app_vpc.public_subnets[0]
 
   tags = {
     Name = "HelloWorld" # How it appears on AWS
@@ -51,7 +51,7 @@ module "app_sg" {       # taken from https://registry.terraform.io/modules/terra
   version = "5.3.0"
   name = "app_new"
 
-  vpc_id = module.blog_vpc.vpc_id 
+  vpc_id = module.app_vpc.vpc_id 
   
   ingress_rules = ["http-80-tcp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
