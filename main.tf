@@ -37,7 +37,7 @@ resource "aws_instance" "app" {   # resource definition: what we want, the recou
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type # Variable defined by us
 
-  vpc_security_group_ids = [aws_security_group.app.id]
+  vpc_security_group_ids = [module.app_sg.security_group_id]
 
   subnet_id = module.app_vpc.public_subnets[0]
 
