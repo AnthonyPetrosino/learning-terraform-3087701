@@ -24,7 +24,7 @@ module "app_vpc" {
   name = "dev" # Name of the vpc that we are creating
   cidr = "10.0.0.0/16"
 
-  azs             = ["us-west-1a", "us-west-2b", "us-west-1c"]  # Availability zones
+  azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]  # Availability zones
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
   tags = {
